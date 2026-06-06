@@ -3,776 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TESYHETERO | Mais FPS, menos lag</title>
-    <style>
-        /* Reset e Variáveis de Cores (Dark & Laranja) */
-        :root {
-            --bg-principal: #09090b;
-            --bg-card: #18181b;
-            --bg-card-hover: #27272a;
-            --cor-laranja: #ff6a00;
-            --cor-laranja-hover: #e05d00;
-            --texto-branco: #ffffff;
-            --texto-cinza: #a1a1aa;
-            --borda: rgba(63, 63, 70, 0.4);
-        }
+    <title>CHX LAUNCHER</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+    <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            scroll-behavior: smooth;
+            font-family: 'Montserrat', sans-serif;
         }
 
         body {
-            background-color: var(--bg-principal);
-            color: var(--texto-branco);
-            overflow-x: hidden;
-        }
-
-        /* Barra de Navegação (Navbar) */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(9, 9, 9, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--borda);
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 20px;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 20px;
-        }
-
-        .logo-img {
-            width: 32px;
-            height: 32px;
-            object-fit: cover;
-            border-radius: 4px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav ul li a {
-            color: var(--texto-cinza);
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        nav ul li a:hover {
-            color: var(--texto-branco);
-        }
-
-        .btn-discord-nav {
-            background-color: #5865F2;
-            color: white;
-            padding: 10px 18px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: opacity 0.2s;
-        }
-
-        .btn-discord-nav:hover {
-            opacity: 0.9;
-        }
-
-        /* Seção Principal (Hero) */
-        .hero {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 160px 20px 100px 20px;
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .game-tag {
-            color: var(--texto-cinza);
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
-
-        h1 {
-            font-size: 64px;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            max-width: 600px;
-        }
-
-        .hero p {
-            color: var(--texto-cinza);
-            font-size: 18px;
-            line-height: 1.6;
-            max-width: 550px;
-            margin-bottom: 40px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 60px;
-        }
-
-        .btn-primary {
-            background-color: var(--cor-laranja);
-            color: var(--texto-branco);
-            padding: 16px 32px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: background-color 0.2s;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--cor-laranja-hover);
-        }
-
-        .btn-secondary {
-            background-color: rgba(255, 255, 255, 0.05);
-            color: var(--texto-branco);
-            padding: 16px 32px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            border: 1px solid var(--borda);
-            transition: background-color 0.2s;
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .stats {
-            display: flex;
-            gap: 50px;
-            border-top: 1px solid rgba(63, 63, 70, 0.3);
-            padding-top: 30px;
-            max-width: 600px;
-        }
-
-        .stat-item h3 {
-            font-size: 32px;
-            color: var(--cor-laranja);
-            font-weight: 700;
-        }
-
-        .stat-item p {
-            font-size: 14px;
-            color: var(--texto-cinza);
-            margin-top: 5px;
-        }
-
-        /* Seções de Conteúdo Padrão */
-        section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 100px 20px;
-        }
-
-        .section-title {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .section-desc {
-            color: var(--texto-cinza);
-            font-size: 16px;
-            margin-bottom: 50px;
-            max-width: 600px;
-        }
-
-        /* Seção O que o CHX Entrega */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--borda);
-            border-radius: 16px;
-            padding: 30px;
-            transition: background-color 0.2s;
-        }
-
-        .card:hover {
-            background-color: var(--bg-card-hover);
-        }
-
-        .card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-
-        .card p {
-            color: var(--texto-cinza);
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .card ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .card ul li {
-            font-size: 14px;
-            color: var(--texto-cinza);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .card ul li::before {
-            content: "—";
-            color: var(--cor-laranja);
-        }
-
-        /* Seção Desempenho */
-        .perf-flex {
-            display: flex;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .perf-info {
-            flex: 1;
-        }
-
-        .perf-graphic {
-            flex: 1;
-            background-color: var(--bg-card);
-            border: 1px solid var(--borda);
-            border-radius: 16px;
-            padding: 40px;
-        }
-
-        .bar-container {
-            margin-bottom: 25px;
-        }
-
-        .bar-label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        .bar-bg {
-            background-color: rgba(255, 255, 255, 0.05);
-            height: 12px;
-            border-radius: 6px;
-            width: 100%;
-        }
-
-        .bar-fill {
-            height: 100%;
-            border-radius: 6px;
-        }
-
-        .fill-vanilla {
-            background-color: var(--texto-cinza);
-            width: 60%;
-        }
-
-        .fill-chx {
-            background-color: var(--cor-laranja);
-            width: 95%;
-            box-shadow: 0 0 15px rgba(255, 106, 0, 0.4);
-        }
-
-        /* Seção Equipe */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .member-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--borda);
-            border-radius: 16px;
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        .member-avatar {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px auto;
-            background-color: #27272a;
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            color: var(--texto-cinza);
-        }
-
-        .member-card h4 {
-            font-size: 18px;
-            margin-bottom: 8px;
-        }
-
-        .role-badge {
-            display: inline-block;
-            border: 1px solid var(--cor-laranja);
-            color: var(--cor-laranja);
-            font-size: 11px;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 20px;
-            text-transform: uppercase;
-        }
-
-        .btn-full-team {
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--borda);
-            color: var(--texto-branco);
-            padding: 16px;
-            border-radius: 12px;
-            text-align: center;
-            text-decoration: none;
-            font-weight: 600;
-            display: block;
-            transition: background-color 0.2s;
-        }
-
-        .btn-full-team:hover {
-            background-color: rgba(255, 255, 255, 0.07);
-        }
-
-        /* Seção Novidades */
-        .news-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--borda);
-            border-radius: 16px;
+            background: #0c0c0c; 
+            /* Imagem de fundo temática com tonalidade escura para destacar o laranja */
+            background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+                        url('https://images.unsplash.com/photo-1607988795691-3d0147b43231?q=80&w=1920') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            height: 100vh;
             overflow: hidden;
         }
 
-        .news-banner {
-            background: linear-gradient(135deg, #27272a 0%, #09090b 100%);
-            height: 300px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-bottom: 1px solid var(--borda);
-        }
-
-        .news-banner-title {
-            font-size: 42px;
-            font-weight: 800;
-            color: #e4e4e7;
-            letter-spacing: -1px;
-        }
-
-        .news-content {
-            padding: 30px;
-        }
-
-        .news-content h4 {
-            font-size: 20px;
-            margin-bottom: 8px;
-        }
-
-        .news-content p {
-            color: var(--texto-cinza);
-            font-size: 15px;
-        }
-
-        /* Seção FAQ (Perguntas Frequentes) */
-        .faq-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            max-width: 800px;
-        }
-
-        .faq-item {
-            background-color: var(--bg-card);
-            border: 1px solid var(--borda);
-            border-radius: 12px;
-            padding: 24px;
-        }
-
-        .faq-question {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 12px;
+        /* --- HEADER / MENU --- */
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
-        .faq-question::after {
-            content: "×";
-            color: var(--texto-cinza);
-            font-size: 20px;
-        }
-
-        .faq-answer {
-            color: var(--texto-cinza);
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        /* Seção Fim / Call to Action */
-        .cta-section {
-            text-align: center;
-            padding: 100px 20px;
-            border-top: 1px solid var(--borda);
-        }
-
-        .cta-section h2 {
-            font-size: 36px;
+        .logo {
             font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .cta-section p {
-            color: var(--texto-cinza);
-            margin-bottom: 30px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        /* Rodapé (Footer) */
-        footer {
-            border-top: 1px solid var(--borda);
-            padding: 60px 20px;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .footer-info p {
-            color: var(--texto-cinza);
-            font-size: 14px;
-            margin-top: 12px;
-            max-width: 300px;
-            line-height: 1.5;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 80px;
-        }
-
-        .footer-column h5 {
-            font-size: 12px;
-            color: var(--texto-branco);
-            text-transform: uppercase;
+            font-size: 1.2rem;
             letter-spacing: 1px;
-            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .footer-column ul {
-            list-style: none;
+        .logo-icon {
+            background: #ff6600; /* Cor Laranja Principal */
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #bbb;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: #ff8833; /* Destaque laranja ao passar o mouse */
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .social-icon {
+            color: #fff;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-icon:hover {
+            color: #ff6600;
+        }
+
+        .btn-entrar {
+            text-decoration: none;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .btn-entrar:hover {
+            background: #ff6600;
+            border-color: #ff6600;
+        }
+
+        /* --- CONTEÚDO PRINCIPAL (HERO) --- */
+        .hero {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px);
+            text-align: center;
+            padding: 0 20px;
         }
 
-        .footer-column ul li a {
-            color: var(--texto-cinza);
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #ddd;
+            letter-spacing: 1px;
+            margin-bottom: 35px;
+        }
+
+        /* Botão de Download Laranja com Efeito Glassmorphism */
+        .btn-download {
+            display: inline-block;
             text-decoration: none;
-            font-size: 14px;
-            transition: color 0.2s;
+            background: rgba(255, 102, 0, 0.2); 
+            color: #fff;
+            padding: 16px 65px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: 2px solid #ff6600; 
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.25);
         }
 
-        .footer-column ul li a:hover {
-            color: var(--texto-branco);
+        .btn-download:hover {
+            background: #ff6600;
+            box-shadow: 0 0 30px rgba(255, 102, 0, 0.6);
+            transform: translateY(-2px);
         }
 
-        .copyright {
-            max-width: 1200px;
-            margin: 40px auto 0 auto;
-            padding-top: 30px;
-            border-top: 1px solid rgba(63, 63, 70, 0.2);
-            color: rgba(161, 161, 170, 0.4);
-            font-size: 13px;
+        .os-info {
+            display: block;
+            font-size: 0.75rem;
+            color: #bbb;
+            margin-top: 12px;
+            font-weight: 700;
         }
 
-        /* Responsividade Básica */
-        @media (max-width: 768px) {
-            .grid-3, .team-grid, .footer-links { grid-template-columns: 1fr; flex-direction: column; gap: 30px; }
-            .perf-flex, .footer-container { flex-direction: column; gap: 40px; }
-            nav { display: none; }
-            h1 { font-size: 42px; }
+        /* --- CARDS DE ESTATÍSTICAS --- */
+        .stats-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 60px;
+            width: 100%;
+            max-width: 900px;
+            justify-content: center;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 22px 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            flex: 1;
+            max-width: 260px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 102, 0, 0.5); /* Sutil borda laranja no foco */
+        }
+
+        .stat-card h3 {
+            font-size: 0.75rem;
+            color: #ccc;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ff6600; /* Números destacados em laranja */
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="nav-container">
-            <div class="logo-area">
-                <img class="logo-img" src="https://cdn.discordapp.com/attachments/1347358697051001056/1498712855426633888/20260428_124938.png?ex=6a09e39d&is=6a08921d&hm=e5a5f54667d03256f5e250af01ead79f624be638b43860e039a4ba91916d030f&" alt="CHX Logo">
-                CHX Launcher
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#recursos">Recursos</a></li>
-                    <li><a href="#desempenho">Performance</a></li>
-                    <li><a href="#novidades">Novidades</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#equipe">Equipe</a></li>
-                </ul>
-            </nav>
-            <a href="#" class="btn-discord-nav">Entrar com Discord</a>
+        <div class="logo">
+            <span class="logo-icon">CHX</span> CHX LAUNCHER
+        </div>
+        <nav>
+            <a href="#" class="active">BAIXAR</a>
+            <a href="#">NOTÍCIAS</a>
+            <a href="#">PERGUNTAS FREQUENTES</a>
+            <a href="#">SUPORTE</a>
+            <a href="#">LOJA</a>
+        </nav>
+        <div class="header-right">
+            <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-telegram"></i></a>
+            <a href="#" class="btn-entrar">Entrar</a>
         </div>
     </header>
 
-    <main>
-        <div class="hero">
-            <div class="game-tag">MINECRAFT 1.8.9 • PVP COMPETITIVO</div>
-            <h1>CHX Launcher mais FPS, menos lag</h1>
-            <p>Um launcher construído do zero para quem leva PvP a sério. Menos overhead, mais frames, controle total sobre cada configuração.</p>
-            <div class="hero-buttons">
-                <a href="#" class="btn-primary">Entrar no Discord</a>
-                <a href="#recursos" class="btn-secondary">Ver recursos</a>
+    <main class="hero">
+        <div class="hero-content">
+            <h1>CHX LAUNCHER</h1>
+            <p class="subtitle">LANÇADOR PARA MINECRAFT COM 50+ MODS, MELHORIAS DE FPS E MUITO MAIS</p>
+            
+            <a href="#" class="btn-download">BAIXAR CLIENTE</a>
+            <span class="os-info">Disponível para Windows</span>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <h3>TOTALMENTE INTEGRADO<br>MODS MINECRAFT</h3>
+                <div class="stat-number">65+</div>
             </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <h3>+35%</h3>
-                    <p>FPS BOOST*</p>
-                </div>
-                <div class="stat-item">
-                    <h3>1.8.9</h3>
-                    <p>VERSÃO</p>
-                </div>
+            <div class="stat-card">
+                <h3>MINECRAFT EM MASSA<br>AUMENTO DE FPS</h3>
+                <div class="stat-number">999 FPS</div>
+            </div>
+            <div class="stat-card">
+                <h3>JOGADORES ONLINE<br>AGORA MESMO</h3>
+                <div class="stat-number">499</div>
             </div>
         </div>
     </main>
-
-    <section id="recursos">
-        <h2 class="section-title">O que o CHX entrega</h2>
-        <p class="section-desc">Cada detalhe foi pensado para reduzir latência, eliminar stutters e dar ao jogador controle real sobre o client.</p>
-        
-        <div class="grid-3">
-            <div class="card">
-                <h3>Estabilidade & Confiabilidade</h3>
-                <p>Arquitetura modular com ciclo de testes contínuo antes de cada release.</p>
-                <ul>
-                    <li>Sem crashes inesperados</li>
-                    <li>Compatível com servidores populares</li>
-                    <li>Atualizações incrementais e seguras</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Otimização de Renderização</h3>
-                <p>Patches de renderização e gerenciamento de memória que reduzem drops de FPS mesmo em hardware modesto.</p>
-                <ul>
-                    <li>Redução de stutters em combate</li>
-                    <li>Frametime mais consistente</li>
-                    <li>Menor uso de CPU/GPU em idle</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Multiplataforma</h3>
-                <p>Suporte nativo a Windows e Linux, com versão otimizada para Android via PojavLauncher.</p>
-                <ul>
-                    <li>Windows 10/11</li>
-                    <li>Linux</li>
-                    <li>Android via PojavLauncher</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="desempenho">
-        <div class="perf-flex">
-            <div class="perf-info">
-                <h2 class="section-title">Desempenho perfeito</h2>
-                <p class="section-desc">As otimizações do CHX Launcher resultam em ganhos reais de framerate e consistência — não apenas em benchmarks sintéticos, mas em partidas reais de PvP.</p>
-                <div class="stats" style="border:none; padding:0;">
-                    <div class="stat-item">
-                        <h4 style="font-size:20px; margin-bottom:4px;">+35% FPS médio</h4>
-                        <p>vs. client vanilla</p>
-                    </div>
-                    <div class="stat-item">
-                        <h4 style="font-size:20px; margin-bottom:4px;">Frametime estável</h4>
-                        <p>menos variação entre frames</p>
-                    </div>
-                </div>
-            </div>
-            <div class="perf-graphic">
-                <div class="bar-container">
-                    <div class="bar-label">
-                        <span>Client padrão</span>
-                        <span>120 FPS</span>
-                    </div>
-                    <div class="bar-bg">
-                        <div class="bar-fill fill-vanilla"></div>
-                    </div>
-                </div>
-                <div class="bar-container" style="margin-bottom:0;">
-                    <div class="bar-label">
-                        <span>CHX Launcher</span>
-                        <span style="color:var(--cor-laranja); font-weight:700;">160+ FPS</span>
-                    </div>
-                    <div class="bar-bg">
-                        <div class="bar-fill fill-chx"></div>
-                    </div>
-                </div>
-                <p style="font-size:13px; color:var(--texto-cinza); margin-top:24px;">Medição em cenário de PvP com hardware mid-range. Resultados podem variar.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="equipe">
-        <h2 class="section-title">Nossa Equipe</h2>
-        <p class="section-desc">As pessoas por trás do desenvolvimento, infraestrutura e comunidade do CHX Launcher.</p>
-        
-        <div class="team-grid">
-            <div class="member-card">
-                <div class="member-avatar">CHX</div>
-                <h4>BGZINGAMER</h4>
-                <span class="role-badge">Owner</span>
-            </div>
-            <div class="member-card">
-                <div class="member-avatar">https://cdn.discordapp.com/attachments/1347358697051001056/1505297221883662398/IMG-20260516-WA0010.jpg?ex=6a0a1cc8&is=6a08cb48&hm=5ff4be26f2cee5d9de426860a17033d5273a42fdb1f619cf5e5bf8bac0fe9505&</div>
-                <h4>V3nom165Hz</h4>
-        </div>
-        <a href="#" class="btn-full-team">Ver toda a equipe ↓</a>
-    </section>
-
-    <section id="novidades">
-        <h2 class="section-title">Novidades</h2>
-        <p class="section-desc">Acompanhe os lançamentos e marcos mais recentes do projeto.</p>
-        
-        <div class="news-card">
-            <div class="news-banner">
-                <div class="news-banner-title">CHX LAUNCHER</div>
-            </div>
-            <div class="news-content">
-                <h4>1.000 membros na comunidade</h4>
-                <p>Alcançamos a marca de 1.000 membros no Discord. Obrigado a cada um que faz parte dessa comunidade.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="faq">
-        <h2 class="section-title">Perguntas frequentes</h2>
-        <p class="section-desc">Dúvidas comuns sobre o CHX Launcher, licenciamento e compatibilidade.</p>
-        
-        <div class="faq-list">
-            <div class="faq-item">
-                <div class="faq-question">O CHX Launcher é gratuito?</div>
-                <div class="faq-answer">O launcher em si é gratuito. Cosméticos e itens visuais são opcionais e pagos separadamente.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">O launcher é permitido em todos os servidores?</div>
-                <div class="faq-answer">Sim. O CHX Launcher não possui nenhuma função que viole as regras de servidores. É um launcher focado em desempenho e otimização, sem hacks, cheats ou vantagens indevidas.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Quais versões do Minecraft são suportadas?</div>
-                <div class="faq-answer">Atualmente o CHX Launcher suporta exclusivamente Minecraft 1.8.9. Suporte a outras versões pode ser adicionado em atualizações futuras.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Funciona no celular?</div>
-                <div class="faq-answer">Sim. O CHX Launcher possui suporte a Android via PojavLauncher, com otimizações específicas para dispositivos móveis.</div>
-            </div>
-        </div>
-    </section>
-
-    <div class="cta-section">
-        <h2>Ainda em desenvolvimento ativo</h2>
-        <p>Acompanhe o progresso, reporte bugs e participe das discussões direto no nosso servidor do Discord.</p>
-        <div class="cta-buttons">
-            <a href="#" class="btn-primary">Entrar no Discord</a>
-            <a href="#" class="btn-secondary">Voltar ao topo</a>
-        </div>
-    </div>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-info">
-                <div class="logo-area">
-                    <img class="logo-img" src="https://cdn.discordapp.com/attachments/1347358697051001056/1498712855426633888/20260428_124938.png?ex=6a09e39d&is=6a08921d&hm=e5a5f54667d03256f5e250af01ead79f624be638b43860e039a4ba91916d030f&" alt="CHX Logo">
-                    CHX Launcher
-                </div>
-                <p>Launcher de Minecraft 1.8.9 focado em performance e PvP competitivo.</p>
-            </div>
-            <div class="footer-links">
-                <div class="footer-column">
-                    <h5>Produto</h5>
-                    <ul>
-                        <li><a href="#">Recursos</a></li>
-                        <li><a href="#">Performance</a></li>
-                        <li><a href="#">Novidades</a></li>
-                        <li><a href="#">Download</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h5>Comunidade</h5>
-                    <ul>
-                        <li><a href="#">Discord</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h5>Sobre</h5>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Equipe</a></li>
-                        <li><a href="#">Termos de Uso</a></li>
-                        <li><a href="#">Privacidade</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="copyright">
-            &copy; 2026 CHX Launcher. Não afiliado à Mojav ou Microsoft.
-        </div>
-    </footer>
 
 </body>
 </html>
