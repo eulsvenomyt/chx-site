@@ -18,9 +18,8 @@
 
         body {
             background: #0c0c0c; 
-            /* Imagem de fundo temática com tonalidade escura para destacar o laranja */
             background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
-                        url('https://wallpapers.com/images/high/train-track-best-minecraft-ekrb0ar5fl9k4vpx.webp') no-repeat center center fixed;
+                        url('https://images.unsplash.com/photo-1607988795691-3d0147b43231?q=80&w=1920') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
             height: 100vh;
@@ -44,15 +43,14 @@
             letter-spacing: 1px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px; /* Espaço entre a imagem e o texto */
         }
 
-        .logo-icon {
-            background: #ff6600; /* Cor Laranja Principal */
-            padding: 5px 12px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 800;
+        /* Ajuste do tamanho do seu novo ícone */
+        .logo-img {
+            height: 32px; /* Altura ideal para alinhar com o texto */
+            width: auto;
+            object-fit: contain;
         }
 
         nav {
@@ -69,7 +67,7 @@
         }
 
         nav a:hover, nav a.active {
-            color: #ff8833; /* Destaque laranja ao passar o mouse */
+            color: #ff8833; 
         }
 
         .header-right {
@@ -131,7 +129,6 @@
             margin-bottom: 35px;
         }
 
-        /* Botão de Download Laranja com Efeito Glassmorphism */
         .btn-download {
             display: inline-block;
             text-decoration: none;
@@ -186,7 +183,7 @@
 
         .stat-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(255, 102, 0, 0.5); /* Sutil borda laranja no foco */
+            border-color: rgba(255, 102, 0, 0.5); 
         }
 
         .stat-card h3 {
@@ -200,7 +197,7 @@
         .stat-number {
             font-size: 2.2rem;
             font-weight: 800;
-            color: #ff6600; /* Números destacados em laranja */
+            color: #ff6600; 
         }
     </style>
 </head>
@@ -208,7 +205,8 @@
 
     <header>
         <div class="logo">
-            <span class="logo-icon">CHX</span> CHX LAUNCHER
+            <img src="https://cdn.discordapp.com/attachments/1347358697051001056/1498712855426633888/20260428_124938.png?ex=6a25931d&is=6a24419d&hm=4ba8773c2371991f1d6cee17778ff0629edaa03187a2db5d1e031fd6938e86dd&" alt="CHX Logo" class="logo-img">
+            CHX LAUNCHER
         </div>
         <nav>
             <a href="#" class="active">BAIXAR</a>
