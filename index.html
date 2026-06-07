@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHX LAUNCHER</title>
     
-    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1347358697051001056/1498712855426633888/20260428_124938.png?ex=6a25931d&is=6a24419d&hm=4ba8773c2371991f1d6cee17778ff0629edaa03187a2db5d1e031fd6938e86dd&">
-    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -21,58 +19,13 @@
         body {
             background: #0c0c0c; 
             background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
-                        url('https://cdn.discordapp.com/attachments/1347358697051001056/1466392781743329373/Novo_elemento_1_CBEDAB2.gif?ex=6a25fcf3&is=6a24bg73&hm=7d4da4342c5e01a7f5ce711106b4c1740c0cf5a0f25bf82021189f49e0629932&') no-repeat center center fixed;
+                        url('https://cdn.discordapp.com/attachments/1347358697051001056/1466392781743329373/Novo_elemento_1_CBEDAB2.gif?ex=6a25fcf3&is=6a24ab73&hm=7d4da4342c5e01a7f5ce711106b4c1740c0cf5a0f25bf82021189f49e0629932&') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow-y: auto; 
-            position: relative;
-        }
-
-        /* --- EFEITO DE NEVE EM CSS --- */
-        .snow-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .snowflake {
-            position: absolute;
-            top: -10px;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: fall linear infinite;
-        }
-
-        /* Configuração das variações de tamanho, posição e velocidade da neve */
-        .snowflake:nth-child(1) { left: 10%; width: 4px; height: 4px; animation-duration: 8s; animation-delay: 0s; }
-        .snowflake:nth-child(2) { left: 20%; width: 6px; height: 6px; animation-duration: 11s; animation-delay: 1s; opacity: 0.5; }
-        .snowflake:nth-child(3) { left: 30%; width: 3px; height: 3px; animation-duration: 9s; animation-delay: 3s; }
-        .snowflake:nth-child(4) { left: 40%; width: 5px; height: 5px; animation-duration: 13s; animation-delay: 2s; }
-        .snowflake:nth-child(5) { left: 50%; width: 4px; height: 4px; animation-duration: 7s; animation-delay: 4s; }
-        .snowflake:nth-child(6) { left: 60%; width: 7px; height: 7px; animation-duration: 12s; animation-delay: 0.5s; opacity: 0.4; }
-        .snowflake:nth-child(7) { left: 70%; width: 3px; height: 3px; animation-duration: 10s; animation-delay: 2.5s; }
-        .snowflake:nth-child(8) { left: 80%; width: 6px; height: 6px; animation-duration: 14s; animation-delay: 1.5s; }
-        .snowflake:nth-child(9) { left: 90%; width: 4px; height: 4px; animation-duration: 9s; animation-delay: 5s; }
-        .snowflake:nth-child(10) { left: 95%; width: 5px; height: 5px; animation-duration: 11s; animation-delay: 3.5s; }
-        .snowflake:nth-child(11) { left: 15%; width: 5px; height: 5px; animation-duration: 10s; animation-delay: 6s; }
-        .snowflake:nth-child(12) { left: 25%; width: 3px; height: 3px; animation-duration: 8s; animation-delay: 7s; }
-        .snowflake:nth-child(13) { left: 45%; width: 6px; height: 6px; animation-duration: 12s; animation-delay: 5.5s; }
-        .snowflake:nth-child(14) { left: 65%; width: 4px; height: 4px; animation-duration: 9s; animation-delay: 6.5s; }
-        .snowflake:nth-child(15) { left: 85%; width: 5px; height: 5px; animation-duration: 13s; animation-delay: 4.8s; }
-
-        @keyframes fall {
-            0% { top: -10px; transform: translateX(0); }
-            50% { transform: translateX(20px); }
-            100% { top: 100vh; transform: translateX(-10px); }
+            overflow-y: auto; /* Permite rolar a página para ver o rodapé profissional */
         }
 
         /* --- HEADER / MENU --- */
@@ -84,8 +37,6 @@
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 10;
         }
 
         .logo {
@@ -126,6 +77,16 @@
             gap: 20px;
         }
 
+        .social-icon {
+            color: #fff;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-icon:hover {
+            color: #ff6600;
+        }
+
         .btn-entrar {
             text-decoration: none;
             color: #fff;
@@ -148,11 +109,9 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            flex: 1; 
+            flex: 1; /* Ocupa o espaço restante entre o header e o footer */
             text-align: center;
             padding: 60px 20px;
-            position: relative;
-            z-index: 10;
         }
 
         .hero-content h1 {
@@ -185,7 +144,6 @@
             -webkit-backdrop-filter: blur(5px);
             transition: all 0.3s ease;
             box-shadow: 0 0 15px rgba(255, 102, 0, 0.25);
-            cursor: pointer;
         }
 
         .btn-download:hover {
@@ -202,6 +160,47 @@
             font-weight: 700;
         }
 
+        /* --- CARDS DE ESTATÍSTICAS --- */
+        .stats-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 60px;
+            width: 100%;
+            max-width: 900px;
+            justify-content: center;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 22px 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            flex: 1;
+            max-width: 260px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 102, 0, 0.5); 
+        }
+
+        .stat-card h3 {
+            font-size: 0.75rem;
+            color: #ccc;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ff6600; 
+        }
+
         /* --- FOOTER PROFISSIONAL --- */
         footer {
             background: #000000;
@@ -210,8 +209,6 @@
             flex-direction: column;
             gap: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            z-index: 10;
         }
 
         .footer-socials {
@@ -227,7 +224,7 @@
         }
 
         .footer-socials a:hover {
-            color: #ff6600; 
+            color: #ff6600; /* Destaque laranja nos ícones inferiores */
         }
 
         .footer-bottom {
@@ -253,39 +250,43 @@
             opacity: 0.5;
         }
 
+        .footer-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
         .footer-disclaimer {
             font-size: 0.75rem;
             color: #555;
             font-weight: 700;
         }
 
+        /* Responsividade básica para o rodapé */
         @media (max-width: 900px) {
             .footer-bottom {
                 flex-direction: column;
                 text-align: center;
             }
+            .footer-links {
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
-
-    <div class="snow-wrapper">
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-    </div>
 
     <header>
         <div class="logo">
@@ -293,11 +294,12 @@
             CHX LAUNCHER
         </div>
         <nav>
-            <a href="https://docs.google.com/uc?export=download&id=1GTnEydm1NAr9Fa5UMKMWyNWcSbuelYgU" download="CHX_Launcher" class="active">BAIXAR</a>
+            <a href="" target="_blank" class="active">BAIXAR</a>
             <a href="https://discord.gg/by2d6z8sxg" target="_blank">SUPORTE</a>
         </nav>
         
         <div class="header-right">
+    
             <a href="#" class="btn-entrar">Entrar</a>
         </div>
     </header>
@@ -307,8 +309,12 @@
             <h1>CHX LAUNCHER</h1>
             <p class="subtitle">LANÇADOR PARA MINECRAFT, MELHORIAS DE FPS E MUITO MAIS</p>
             
-            <a href="https://docs.google.com/uc?export=download&id=1GTnEydm1NAr9Fa5UMKMWyNWcSbuelYgU" download="CHX_Launcher" class="btn-download">BAIXAR CLIENTE</a>
+            <a href="" target="_blank" class="btn-download">BAIXAR CLIENTE</a>
             <span class="os-info">Disponível para Windows 10/11</span>
+        </div>
+
+    
+            </div>
         </div>
     </main>
 
@@ -318,12 +324,17 @@
             <a href="https://www.tiktok.com/@kultzz_?_r=1&_t=ZS-96zzRAbMpAy" target="_blank"><i class="fab fa-tiktok"></i></a>
             <a href="https://www.instagram.com/kultzzx_r.s?igsh=MTVhZm14MDRxdDRtbQ==" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://www.youtube.com/@V3nomPerspicaz" target="_blank"><i class="fab fa-youtube"></i></a>
+            
         </div>
 
         <div class="footer-bottom">
             <div class="footer-left">
                 <img src="https://cdn.discordapp.com/attachments/1347358697051001056/1498712855426633888/20260428_124938.png?ex=6a25931d&is=6a24419d&hm=4ba8773c2371991f1d6cee17778ff0629edaa03187a2db5d1e031fd6938e86dd&" alt="CHX Logo" class="footer-logo">
                 <span>© 2026 CHX LAUNCHER</span>
+            </div>
+
+        
+            
             </div>
 
             <div class="footer-disclaimer">
